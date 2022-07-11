@@ -8,33 +8,42 @@ import {
   Code,
   Grid,
   theme,
+  Button,
+  Flex,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from '@chakra-ui/react'
+import Connect from './components/Connect';
+import TablePools from './components/TablePools';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+      <Flex 
+          justifyContent={'center'}
+          bg='#000d37' 
+          textAlign="center" 
+          fontSize="xl">
+        <Flex minH="100vh" 
+              w={['100%','100%','50%']}
+              flexDirection={'column'} 
+              justifyContent={'center'}
+              p={3}>
+        <Connect></Connect>
+        <TablePools></TablePools>
+        </Flex>
+      </Flex>
     </ChakraProvider>
   );
 }
