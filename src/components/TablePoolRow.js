@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     Box,
   Button,
@@ -13,9 +13,10 @@ import {
 import {pools} from '../data/pools';
 import {assets} from '../data/assets';
 import {icons} from '../data/icons';
-import {queryBalance} from '../utils/ContractQueryProvider'
 import {collectFees} from '../utils/ContractExecuteProvider'
+import TransactionsContext from '../context/TransactionsContext';
 import {useConnectedWallet, useLCDClient, useWallet, WalletStatus} from '@terra-money/wallet-provider';
+import {maker_address} from '../data/maker_contract';
 
 
 function TablePoolRow(props) {
@@ -27,17 +28,22 @@ function TablePoolRow(props) {
     status,
     network
   } = useWallet();
-  console.log('HEREEEE',pools, pools[network.chainID], network.chainID)
+  const {transactions, setTransactions} = useContext(TransactionsContext);
   const assets_ = pools[network.chainID][pool]?.assets
   const asset1 = assets_?assets[network.chainID][assets_[0].name]:''
   const asset2 = assets_?assets[network.chainID][assets_[1].name]:''
 
-  console.log(asset1,asset2)
+  const handleTxHash = (hash)=>{
+    const txs = [...transactions, hash]
+    setTransactions(txs)
+  }
 
   const handleClick = () => {
     setLoading(true)
     console.log(network, status)
-    collectFees(pools[network.chainID][pool], wallet, lcd).then(()=>{
+    collectFees(maker_address[network.chainID], 
+                pools[network.chainID][pool], 
+                wallet, lcd, handleTxHash).finally(()=>{
         setLoading(false)
     })
   }
@@ -81,7 +87,7 @@ function TablePoolRow(props) {
                 border={'solid 0.1px'}
                 height={'32px'}
                 onClick={()=>handleClick()}
-                >Collect</Button>
+                >Collect Fees</Button>
             }
             {(loading)&&
                 <Spinner/>

@@ -50,6 +50,18 @@ export const pools = {
                     name: "uluna"
                 }
             ]
+        },
+        'terra1mpj7j25fw5a0q5vfasvsvdp6xytaqxh006lh6f5zpwxvadem9hwsy6m508':{
+            "assets": [
+                {
+                    type: "token",
+                    name: "terra14xsm2wzvu7xaf567r693vgfkhmvfs08l68h4tjj5wjgyn5ky8e2qvzyanh"
+                },
+                {
+                    type: "native_token",
+                    name: "uluna"
+                }
+            ]
         }
     }
 }

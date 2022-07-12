@@ -1,5 +1,4 @@
 // required modules
-import {pools} from '../data/pools';
 const {MsgExecuteContract} = require('@terra-money/terra.js');
 
 
@@ -24,10 +23,9 @@ const getAsset = (asset)=>{
     }
 }
 
-export const collectFees = async (pool, wallet, lcd) => {
+export const collectFees = async (contract_address, pool, wallet, lcd, handleTxHash) => {
     console.log(pool)
     const assets = pool.assets
-    const contract_address = 'terra146ffs60x8seza3cq9a447mhw0zqeylkj37ye4uj7rl2uwhvgq89sts2ess'
     // maker collect function
     const asset1 = getAsset(assets[0])
     const asset2 = getAsset(assets[1])
@@ -52,6 +50,7 @@ export const collectFees = async (pool, wallet, lcd) => {
         })
         .then(result => {
             console.log(result.txhash)
+            handleTxHash(result.txhash)
         });
     }
     await start();

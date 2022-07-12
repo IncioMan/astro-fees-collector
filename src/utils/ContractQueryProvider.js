@@ -6,10 +6,8 @@ const terra = new LCDClient({
     chainID: 'pisco-1',
 });
 
-export const queryBalance = () => {
+export const queryBalance = (contract_address) => {
     // maker testnet address
-    const contract_address = 'terra146ffs60x8seza3cq9a447mhw0zqeylkj37ye4uj7rl2uwhvgq89sts2ess'
-    // query balances
     const query = terra.wasm.contractQuery(
         contract_address,
         {

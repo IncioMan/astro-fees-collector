@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ChakraProvider,
   Box,
@@ -11,23 +11,14 @@ import {
   Button,
   Flex,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-} from '@chakra-ui/react'
 import Connect from './components/Connect';
 import TablePools from './components/TablePools';
+import TableTransactions from './components/TableTransactions';
+import TransactionsContext from './context/TransactionsContext';
 
 function App() {
+  const [transactions, setTransactions] = useState([]);
+
   return (
     <ChakraProvider theme={theme}>
       <Flex 
@@ -41,7 +32,10 @@ function App() {
               justifyContent={'center'}
               p={3}>
         <Connect></Connect>
-        <TablePools></TablePools>
+        <TransactionsContext.Provider value={{transactions, setTransactions}}>
+          <TablePools></TablePools>
+          <TableTransactions></TableTransactions>
+        </TransactionsContext.Provider>
         </Flex>
       </Flex>
     </ChakraProvider>
