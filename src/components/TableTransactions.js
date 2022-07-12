@@ -25,7 +25,7 @@ function TableTransactions() {
   return (
     <>
       {(status === WalletStatus.WALLET_CONNECTED) && (transactions)&&(transactions.length>0)&&
-      <TableContainer w={['100%']} display={'flex'} alignItems={'center'}>
+      <TableContainer p={'24px 0px'} w={['100%']} display={'flex'} alignItems={'center'}>
           <Table variant='simple'>
           <Thead>
               <Tr>

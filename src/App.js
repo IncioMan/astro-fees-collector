@@ -16,6 +16,8 @@ import Connect from './components/Connect';
 import TablePools from './components/TablePools';
 import TableTransactions from './components/TableTransactions';
 import TransactionsContext from './context/TransactionsContext';
+import { Icon } from '@chakra-ui/react'
+import { FaTwitter } from 'react-icons/fa'
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -37,8 +39,12 @@ function App() {
         <Connect></Connect>
         <TransactionsContext.Provider value={{transactions, setTransactions}}>
           <TablePools></TablePools>
-          <TableTransactions></TableTransactions>
+          <TableTransactions ></TableTransactions>
         </TransactionsContext.Provider>
+        <Flex justifyContent={'center'} p={'24px 0px'}>
+          <Link href={'https://twitter.com/IncioMan'}
+            target={'_blank'}><Icon as={FaTwitter} w={7} h={7}></Icon></Link>
+        </Flex>
         </Flex>
       </Flex>
       </DarkMode>
