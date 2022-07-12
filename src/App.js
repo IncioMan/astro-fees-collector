@@ -7,10 +7,11 @@ import {
   VStack,
   Code,
   Grid,
-  theme,
   Button,
   Flex,
+  DarkMode,
 } from '@chakra-ui/react';
+import theme from './theme';
 import Connect from './components/Connect';
 import TablePools from './components/TablePools';
 import TableTransactions from './components/TableTransactions';
@@ -21,11 +22,13 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
+      <DarkMode>
       <Flex 
           justifyContent={'center'}
           bg='#000d37' 
           textAlign="center" 
-          fontSize="xl">
+          fontSize="xl"
+          color={'white'}>
         <Flex minH="100vh" 
               w={['100%','100%','50%']}
               flexDirection={'column'} 
@@ -38,6 +41,7 @@ function App() {
         </TransactionsContext.Provider>
         </Flex>
       </Flex>
+      </DarkMode>
     </ChakraProvider>
   );
 }
