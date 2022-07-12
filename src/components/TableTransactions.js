@@ -19,11 +19,12 @@ import TransactionsContext from '../context/TransactionsContext';
 function TableTransactions() {
   const {transactions} = useContext(TransactionsContext);
   const {
+    status,
     network
   } = useWallet();
   return (
     <>
-      {(transactions)&&(transactions.length>0)&&
+      {(status === WalletStatus.WALLET_CONNECTED) && (transactions)&&(transactions.length>0)&&
       <TableContainer w={['100%']} display={'flex'} alignItems={'center'}>
           <Table variant='simple'>
           <Thead>
