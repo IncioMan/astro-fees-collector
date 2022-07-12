@@ -39,6 +39,18 @@ export const pools = {
                 }
             ]
         },
+        'terra1ygn5h8v8rm0v8y57j3mtu3mjr2ywu9utj6jch6e0ys2fc2pkyddqekwrew':{
+            "assets": [
+                {
+                    type: "token",
+                    name: "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4"
+                },
+                {
+                    type: "token",
+                    name: "ibc/CBF67A2BCF6CAE343FDF251E510C8E18C361FC02B23430C121116E0811835DEF"
+                }
+            ]
+        },
         'terra13rj43lsucnel7z8hakvskr7dkfj27hd9aa06pcw4nh7t66fgt7qshrpmaw':{
             "assets": [
                 {
@@ -48,6 +60,42 @@ export const pools = {
                 {
                     type: "native_token",
                     name: "uluna"
+                }
+            ]
+        },
+        'terra1cr8dg06sh343hh4xzn3gxd3ayetsjtet7q5gp4kfrewul2kql8sqvhaey4':{
+            "assets": [
+                {
+                    type: "native_token",
+                    name: "uluna"
+                },
+                {
+                    type: "token",
+                    name: "terra1ecgazyd0waaj3g7l9cmy5gulhxkps2gmxu9ghducvuypjq68mq2s5lvsct"
+                }
+            ]
+        },
+        'terra1jynmf6gteg4rd03ztldan5j2dp78su4tc3hfvkve8dl068c2yppsk5uszc':{
+            "assets": [
+                {
+                    type: "token",
+                    name: "terra1xumzh893lfa7ak5qvpwmnle5m5xp47t3suwwa9s0ydqa8d8s5faqn6x7al"
+                },
+                {
+                    type: "native_token",
+                    name: "uluna"
+                }
+            ]
+        },
+        'terra1w579ysjvpx7xxhckxewk8sykxz70gm48wpcuruenl29rhe6p6raslhj0m6':{
+            "assets": [
+                {
+                    type: "token",
+                    name: "terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26"
+                },
+                {
+                    type: "token",
+                    name: "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4"
                 }
             ]
         },
