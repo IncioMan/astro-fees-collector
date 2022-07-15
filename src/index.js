@@ -11,7 +11,16 @@ import {
 
 
 const container = document.getElementById('root');
+container.style.height = 'inherit'
 const root = ReactDOM.createRoot(container);
+
+const documentHeight = () => {
+  const doc = document.documentElement
+  doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+  console.log(window.innerHeight)
+ }
+ window.addEventListener('resize', documentHeight)
+ documentHeight()
 
 
 getChainOptions().then((chainOptions) => {

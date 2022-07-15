@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   Table,
   Thead,
@@ -22,6 +22,8 @@ function TableTransactions() {
     status,
     network
   } = useWallet();
+
+
   return (
     <>
       {(status === WalletStatus.WALLET_CONNECTED) && (transactions)&&(transactions.length>0)&&

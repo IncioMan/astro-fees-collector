@@ -19,17 +19,16 @@ function TablePools() {
     network
   } = useWallet();
   return (
-    <TableContainer w={['100%']} display={'flex'} alignItems={'center'}>
+    <TableContainer 
+        height={'100%'}
+        w={['100%']} 
+        display={'flex'} 
+        overflowY={'auto'}>
         <Table variant='simple'>
-        <Thead>
-            <Tr>
-            <Th>Pool</Th>
-            <Th></Th>
-            </Tr>
-        </Thead>
         <Tbody>
             {
             Object.keys(pools[network.chainID]).map((pool)=>{
+                console.log(pool)
                 return <TablePoolRow pool={pool}></TablePoolRow>
             })}
         </Tbody>

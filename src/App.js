@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ChakraProvider,
   Box,
@@ -14,13 +14,13 @@ import {
 import theme from './theme';
 import Connect from './components/Connect';
 import TablePools from './components/TablePools';
+import IconFooter from './components/IconFooter';
 import TableTransactions from './components/TableTransactions';
 import TransactionsContext from './context/TransactionsContext';
-import { Icon } from '@chakra-ui/react'
-import { FaTwitter, FaGithub } from 'react-icons/fa'
+import './App.css'
+import SectionContainer from './components/SectionContainer';
 
 function App() {
-  const [transactions, setTransactions] = useState([]);
 
   return (
     <ChakraProvider theme={theme}>
@@ -30,25 +30,20 @@ function App() {
           bg='#000d37' 
           textAlign="center" 
           fontSize="xl"
-          color={'white'}>
-        <Flex minH="100vh" 
-              w={['100%','100%','50%']}
+          color={'white'}
+          height={'inherit'}>
+        <Flex w={['100%','100%','50%']}
               flexDirection={'column'} 
-              justifyContent={'center'}
-              p={3}>
-        <Connect></Connect>
-        <TransactionsContext.Provider value={{transactions, setTransactions}}>
-          <TablePools></TablePools>
-          <TableTransactions ></TableTransactions>
-        </TransactionsContext.Provider>
-        <Flex justifyContent={'center'} p={'24px 0px'}>
-          <Link href={'https://twitter.com/IncioMan'}
-            padding={'0px 4px'}
-            target={'_blank'}><Icon as={FaTwitter} w={7} h={7}></Icon></Link>
-          <Link href={'https://github.com/IncioMan/astro-fees-collector'}
-            padding={'0px 4px'}
-            target={'_blank'}><Icon as={FaGithub} w={7} h={7}></Icon></Link>
+              justifyContent={'center'}>
+        <SectionContainer/>
+        <Flex 
+          height={'10%'}
+          w={['100%']}
+          justifyContent={'center'}
+          paddingTop={'32px'}>
+          <Connect></Connect>
         </Flex>
+        <IconFooter/>
         </Flex>
       </Flex>
       </DarkMode>

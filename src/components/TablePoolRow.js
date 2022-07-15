@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     Box,
   Button,
@@ -17,6 +17,7 @@ import {collectFees} from '../utils/ContractExecuteProvider'
 import TransactionsContext from '../context/TransactionsContext';
 import {useConnectedWallet, useLCDClient, useWallet, WalletStatus} from '@terra-money/wallet-provider';
 import {maker_address} from '../data/maker_contract';
+import {queryBalance} from '../utils/ContractQueryProvider'
 
 
 function TablePoolRow(props) {
@@ -30,8 +31,9 @@ function TablePoolRow(props) {
   } = useWallet();
   const {transactions, setTransactions} = useContext(TransactionsContext);
   const assets_ = pools[network.chainID][pool]?.assets
-  const asset1 = assets_?assets[network.chainID][assets_[0].name]:''
-  const asset2 = assets_?assets[network.chainID][assets_[1].name]:''
+  const asset1 = assets_?assets[network.chainID][assets_[0].name].name:''
+  const asset2 = assets_?assets[network.chainID][assets_[1].name].name:''
+  console.log(asset1, asset2)
 
   const handleTxHash = (hash)=>{
     const txs = [...transactions, hash]
@@ -51,11 +53,12 @@ function TablePoolRow(props) {
   return (
     <Tr>
         <Td>
-            <Flex minW={'220px'} justifyContent={'initial'}>
-                <Flex alignItems={'center'}>
+            <Flex minW={['150px','220px']} justifyContent={'initial'}>
+                <Flex alignItems={'center'}
+                      fontSize={['12px','17px']}>
                     <Image 
                         marginRight={'5px'}
-                        w={'25px'}
+                        w={['12px','20px']}
                         src={icons[asset1]} 
                         alt={asset1} />
                     {asset1}
@@ -63,10 +66,11 @@ function TablePoolRow(props) {
                 <Flex margin={'0px 10px'}>
                 -
                 </Flex>
-                <Flex alignItems={'center'}>
+                <Flex alignItems={'center'}
+                      fontSize={['12px','17px']}>
                     <Image 
-                        w={'25px'}
                         marginRight={'5px'}
+                        w={['12px','20px']}
                         src={icons[asset2]} 
                         alt={asset2} />
                     {asset2}
@@ -77,15 +81,16 @@ function TablePoolRow(props) {
             <Flex 
                 justifyContent={'center'}
                 height={'32px'}
-                width={'127px'}>
+                width={['80px','127px']}>
             {
                 (!loading)&&(status==WalletStatus.WALLET_CONNECTED)&&<Button 
                 bg={'whiteAlpha.400'}
                 borderRadius={'30px'}
-                width={'127px'}
-                fontWeight={'400'}
+                width={['90px','127px']}
+                fontSize={['10px','14px']}
+                fontWeight={['300','400']}
                 border={'solid 0.1px'}
-                height={'32px'}
+                height={['25px','32px']}
                 onClick={()=>handleClick()}
                 >Collect Fees</Button>
             }

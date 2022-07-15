@@ -1,8 +1,9 @@
 // required modules
+import {getAsset} from './AssetProvider'
 const {MsgExecuteContract} = require('@terra-money/terra.js');
 
 
-const getAsset = (asset)=>{
+const getInfoAsset = (asset)=>{
     if(asset.type === "native_token"){
         return {
             "info": {
@@ -27,8 +28,8 @@ export const collectFees = async (contract_address, pool, wallet, lcd, handleTxH
     console.log(pool)
     const assets = pool.assets
     // maker collect function
-    const asset1 = getAsset(assets[0])
-    const asset2 = getAsset(assets[1])
+    const asset1 = getInfoAsset(assets[0])
+    const asset2 = getInfoAsset(assets[1])
     const execute = new MsgExecuteContract(
         wallet.walletAddress, // sender
         contract_address, // contract account address

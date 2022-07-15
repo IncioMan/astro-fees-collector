@@ -27,6 +27,18 @@ export const pools = {
         }
     },
     'phoenix-1':{
+        'terra1alzkrc6hkvs8g5a064cukfxnv0jj4l3l8vhgfypfxvysk78v6dgqsymgmv':{
+            "assets": [
+                {
+                    type: "token",
+                    name: "terra1gy73st560m2j0esw5c5rjmr899hvtv4rhh4seeajt3clfhr4aupszjss4j"
+                },
+                {
+                    type: "token",
+                    name: "ibc/B3504E092456BA618CC28AC671A71FB08C6CA0FD0BE7C8A5B5A3E2DD933CC9E4"
+                }
+            ]
+        },
         'terra1fd68ah02gr2y8ze7tm9te7m70zlmc7vjyyhs6xlhsdmqqcjud4dql4wpxr':{
             "assets": [
                 {
