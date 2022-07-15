@@ -32,7 +32,7 @@ function App() {
           fontSize="xl"
           color={'white'}
           height={'inherit'}>
-        <Flex w={['100%','100%','50%']}
+        <Flex w={['100%','100%','40%']}
               flexDirection={'column'} 
               justifyContent={'center'}>
         <SectionContainer/>

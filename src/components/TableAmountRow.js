@@ -54,13 +54,12 @@ function TableAmountRow(props) {
   return (
     <Tr>
         <Td>
-            <Flex justifyContent={'initial'}
-                  fontSize={['12px','17px']}>
+            <Flex fontSize={['12px','17px']}>
                 <Flex alignItems={'center'}
                       paddingRight={3}>
                     <Image 
                         marginRight={'5px'}
-                        w={'25px'}
+                        w={['12px','20px']}
                         src={icons[assetInfo?.name]} 
                         alt={assetInfo?.name} />
                 </Flex>
