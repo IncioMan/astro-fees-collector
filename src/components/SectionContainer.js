@@ -30,7 +30,7 @@ export default function SectionContainer() {
               onChange={handleTabsChange}
               height={'50%'}
             >
-              <TabList justifyContent={'center'}>
+              <TabList justifyContent={'center'} borderBottom={'none'}>
                   <Tab>Pools</Tab>
                   <Tab>Fees To Collect</Tab>
                   <Tab>Txs</Tab>
