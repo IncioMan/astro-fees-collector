@@ -28,9 +28,12 @@ export default function SectionContainer() {
             <Tabs
               index={tabIndex} 
               onChange={handleTabsChange}
-              height={'50%'}
+              height={['50%','70%']}
             >
-              <TabList justifyContent={'center'} borderBottom={'none'}>
+              <TabList 
+                paddingBottom={['16px']}
+                justifyContent={'center'} 
+                borderBottom={'none'}>
                   <Tab>Pools</Tab>
                   <Tab>Fees To Collect</Tab>
                   <Tab>Txs</Tab>
