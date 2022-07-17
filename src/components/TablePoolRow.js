@@ -17,7 +17,7 @@ import {collectFees} from '../utils/ContractExecuteProvider'
 import TransactionsContext from '../context/TransactionsContext';
 import {useConnectedWallet, useLCDClient, useWallet, WalletStatus} from '@terra-money/wallet-provider';
 import {maker_address} from '../data/maker_contract';
-import {queryBalance} from '../utils/ContractQueryProvider'
+import { useToast } from '@chakra-ui/react'
 
 
 function TablePoolRow(props) {
@@ -29,6 +29,7 @@ function TablePoolRow(props) {
     status,
     network
   } = useWallet();
+  const toast = useToast()
   const {transactions, setTransactions} = useContext(TransactionsContext);
   const assets_ = pools[network.chainID][pool]?.assets
   const asset1 = assets_?assets[network.chainID][assets_[0].name].name:''
@@ -45,9 +46,19 @@ function TablePoolRow(props) {
     console.log(network, status)
     collectFees(maker_address[network.chainID], 
                 pools[network.chainID][pool], 
-                wallet, lcd, handleTxHash).finally(()=>{
+                wallet, lcd, handleTxHash)
+      .catch((error)=>{
+        console.log(error)
+        toast({
+          title: error.message,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        })
+      })
+      .finally(()=>{
         setLoading(false)
-    })
+      })
   }
 
   return (
