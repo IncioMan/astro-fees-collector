@@ -42,17 +42,13 @@ export const collectFees = async (contract_address, pool, wallet, lcd, handleTxH
         }, // handle msg
     );
     const start = async function () {
-        const executeTx = await wallet.sign({
+        const executeTx = await wallet.post({
             msgs: [execute]
         })
         .then(tx => {
-            console.log(tx.result);
-            return lcd.tx.broadcastSync(tx.result);
+            console.log(tx)
+            handleTxHash(tx.result.txhash)
         })
-        .then(result => {
-            console.log(result.txhash)
-            handleTxHash(result.txhash)
-        });
     }
     await start();
 }
