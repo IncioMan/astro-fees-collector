@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  Button,
   Flex,
   DarkMode,
 } from '@chakra-ui/react';
@@ -18,7 +11,15 @@ import IconFooter from './components/IconFooter';
 import TableTransactions from './components/TableTransactions';
 import TransactionsContext from './context/TransactionsContext';
 import './App.css'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  BrowserRouter
+} from "react-router-dom";
 import SectionContainer from './components/SectionContainer';
+import LiquidityPools from './components/drag/LiquidityPools';
 
 function App() {
 
@@ -32,10 +33,15 @@ function App() {
           fontSize="xl"
           color={'white'}
           height={'inherit'}>
-        <Flex w={['100%','100%','40%']}
+        <Flex w={['100%','100%','50%']}
               flexDirection={'column'} 
               justifyContent={'center'}>
-        <SectionContainer/>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<SectionContainer/>} />
+            <Route index path="/lps" element={<LiquidityPools/>} />
+          </Routes>
+        </BrowserRouter>
         <Flex 
           height={'10%'}
           w={['100%']}
